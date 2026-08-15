@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>Prop Phone — Rodaje</title>
+<meta name="theme-color" content="#000000">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Prop Phone">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- ============ LOCK SCREEN ============ -->
+  <section class="screen active" id="screen-lock">
+    <div class="lock-bg" id="lock-bg"></div>
+    <div class="lock-scrim"></div>
+    <div class="statusbar">
+      <span class="sb-time" id="sb-time-lock">9:41</span>
+      <span class="sb-right">
+        <span id="sb-signal-lock">▂▄▆</span>
+        <span id="sb-wifi-lock">📶</span>
+        <span id="sb-batt-lock">🔋 100%</span>
+      </span>
+    </div>
+    <div class="island"></div>
+    <div class="lock-content">
+      <div class="lock-time" id="lock-time">9:41</div>
+      <div class="lock-date" id="lock-date">lunes, 1 de enero</div>
+      <div class="lock-notifs" id="lock-notifs"></div>
+    </div>
+    <div class="lock-faceid">🔒</div>
+    <div class="lock-unlock-hint">Toca para desbloquear</div>
+  </section>
+
+  <!-- ============ HOME SCREEN ============ -->
+  <section class="screen" id="screen-home">
+    <div class="home-bg" id="home-bg"></div>
+    <div class="statusbar">
+      <span class="sb-time" id="sb-time-home">9:41</span>
+      <span class="sb-right">
+        <span id="sb-signal-home">▂▄▆</span>
+        <span id="sb-wifi-home">📶</span>
+        <span id="sb-batt-home">🔋 100%</span>
+      </span>
+    </div>
+    <div class="island"></div>
+    <div class="home-content">
+      <div class="app-grid">
+        <div class="app-icon" data-open="whatsapp">
+          <div class="icon-glyph bg-wa">💬<span class="icon-badge hidden" id="badge-whatsapp"></span></div>
+          <div class="icon-label">WhatsApp</div>
+        </div>
+        <div class="app-icon" data-open="phone">
+          <div class="icon-glyph bg-phone">📞<span class="icon-badge hidden" id="badge-phone"></span></div>
+          <div class="icon-label">Teléfono</div>
+        </div>
+        <div class="app-icon" data-open="messages">
+          <div class="icon-glyph bg-msg">✉️</div>
+          <div class="icon-label">Mensajes</div>
+        </div>
+        <div class="app-icon" data-open="photos">
+          <div class="icon-glyph bg-photos">🖼️</div>
+          <div class="icon-label">Fotos</div>
+        </div>
+        <div class="app-icon" data-open="camera">
+          <div class="icon-glyph bg-camera">📷</div>
+          <div class="icon-label">Cámara</div>
+        </div>
+        <div class="app-icon" data-open="safari">
+          <div class="icon-glyph bg-safari">🧭</div>
+          <div class="icon-label">Safari</div>
+        </div>
+        <div class="app-icon" data-open="calc">
+          <div class="icon-glyph bg-calc">🧮</div>
+          <div class="icon-label">Calculadora</div>
+        </div>
+        <div class="app-icon" data-open="settings">
+          <div class="icon-glyph bg-settings">⚙️</div>
+          <div class="icon-label">Ajustes</div>
+        </div>
+      </div>
+      <div class="home-dock">
+        <div class="app-icon" data-open="whatsapp"><div class="icon-glyph bg-wa" style="width:56px;height:56px;">💬</div></div>
+        <div class="app-icon" data-open="phone"><div class="icon-glyph bg-phone" style="width:56px;height:56px;">📞</div></div>
+        <div class="app-icon" data-open="photos"><div class="icon-glyph bg-photos" style="width:56px;height:56px;">🖼️</div></div>
+        <div class="app-icon" data-open="director-entry"><div class="icon-glyph bg-director" style="width:56px;height:56px;">🎬</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHATSAPP: CHAT LIST ============ -->
+  <section class="screen" id="app-whatsapp">
+    <div class="statusbar" style="background:var(--wa-header)">
+      <span class="sb-time" id="sb-time-wa">9:41</span>
+      <span class="sb-right"><span id="sb-signal-wa">▂▄▆</span><span id="sb-wifi-wa">📶</span><span id="sb-batt-wa">🔋 100%</span></span>
+    </div>
+    <div class="wa-header">
+      <div class="wa-header-top">
+        <button class="back-btn" data-back="home" style="color:#fff;font-size:22px;background:none;border:none;">‹</button>
+        <div class="wa-title">WhatsApp</div>
+        <div class="wa-header-icons"><span>📷</span><span>⋯</span></div>
+      </div>
+      <div class="wa-search">🔍 Buscar</div>
+      <div class="wa-tabs"><span>Estados</span><span class="active">Chats</span><span>Comunidades</span></div>
+    </div>
+    <div class="wa-list" id="wa-chat-list"></div>
+    <button class="wa-fab">✏️</button>
+  </section>
+
+  <!-- ============ WHATSAPP: CONVERSATION ============ -->
+  <section class="screen" id="app-wa-chat">
+    <div class="wa-chat-header">
+      <button class="back-btn" data-back="whatsapp">‹</button>
+      <div class="avatar" id="wa-chat-avatar"></div>
+      <div class="wa-chat-header-info">
+        <div class="wa-chat-header-name" id="wa-chat-name">—</div>
+        <div class="wa-chat-header-status" id="wa-chat-status">en línea</div>
+      </div>
+      <div class="wa-chat-header-icons"><span>📹</span><span>📞</span></div>
+    </div>
+    <div class="wa-messages" id="wa-messages"></div>
+    <div class="wa-inputbar">
+      <button class="wa-icon-btn">➕</button>
+      <div class="wa-input-pill">
+        <input type="text" id="wa-input" placeholder="Mensaje">
+        <span>📎</span><span>📷</span>
+      </div>
+      <button class="wa-send-btn" id="wa-send-btn">➤</button>
+    </div>
+  </section>
+
+  <!-- ============ PHONE APP ============ -->
+  <section class="screen" id="app-phone">
+    <div class="statusbar">
+      <span class="sb-time" id="sb-time-ph">9:41</span>
+      <span class="sb-right"><span id="sb-signal-ph">▂▄▆</span><span id="sb-wifi-ph">📶</span><span id="sb-batt-ph">🔋 100%</span></span>
+    </div>
+    <div class="ph-header">
+      <button class="back-btn" data-back="home" style="color:var(--ios-blue);font-size:16px;background:none;border:none;padding:0 0 6px 0;">‹ Inicio</button>
+      <div class="title" id="ph-title">Recientes</div>
+    </div>
+    <div class="ph-list" id="ph-recents-list"></div>
+    <div class="ph-list hidden" id="ph-contacts-list"></div>
+    <div class="ph-tabs">
+      <div class="ph-tab active" data-phtab="recents"><div class="ph-tab-icon">🕐</div>Recientes</div>
+      <div class="ph-tab" data-phtab="contacts"><div class="ph-tab-icon">👤</div>Contactos</div>
+      <div class="ph-tab" data-phtab="keypad"><div class="ph-tab-icon">⌨️</div>Teclado</div>
+    </div>
+  </section>
+
+  <!-- ============ INCOMING CALL ============ -->
+  <section class="screen" id="screen-incoming-call">
+    <div>
+      <div class="call-caller-label">llamada de móvil</div>
+      <div class="call-caller-name" id="call-in-name">Marta</div>
+    </div>
+    <div class="call-avatar" id="call-in-avatar">M</div>
+    <div class="call-actions">
+      <div class="call-btn-col">
+        <button class="call-btn decline" id="call-decline-btn">✕</button>
+        <div class="call-btn-label">Rechazar</div>
+      </div>
+      <div class="call-btn-col">
+        <button class="call-btn accept" id="call-accept-btn">📞</button>
+        <div class="call-btn-label">Aceptar</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACTIVE CALL ============ -->
+  <section class="screen" id="screen-active-call">
+    <div style="text-align:center;">
+      <div class="call-caller-name" id="call-active-name" style="font-size:26px;">Marta</div>
+      <div class="call-timer" id="call-timer">00:00</div>
+    </div>
+    <div class="call-avatar small" id="call-active-avatar">M</div>
+    <div class="call-grid">
+      <button class="call-grid-btn" id="btn-mute"><div class="cg-icon">🔇</div><div class="cg-label">Silenciar</div></button>
+      <button class="call-grid-btn"><div class="cg-icon">⌨️</div><div class="cg-label">Teclado</div></button>
+      <button class="call-grid-btn" id="btn-speaker"><div class="cg-icon">🔊</div><div class="cg-label">Altavoz</div></button>
+      <button class="call-grid-btn"><div class="cg-icon">➕</div><div class="cg-label">Añadir</div></button>
+      <button class="call-grid-btn"><div class="cg-icon">📹</div><div class="cg-label">FaceTime</div></button>
+      <button class="call-grid-btn"><div class="cg-icon">👤</div><div class="cg-label">Contactos</div></button>
+    </div>
+    <div class="call-hangup-row">
+      <button class="call-btn hangup" id="call-hangup-btn">📞</button>
+    </div>
+  </section>
+
+  <!-- ============ PHOTOS APP ============ -->
+  <section class="screen" id="app-photos">
+    <div class="statusbar"><span class="sb-time" id="sb-time-ph2">9:41</span><span class="sb-right"><span>▂▄▆</span><span>📶</span><span>🔋 100%</span></span></div>
+    <div class="app-bar"><button class="back-btn" data-back="home">‹ Inicio</button><div class="title">Fotos</div></div>
+    <div class="photos-grid" id="photos-grid"></div>
+  </section>
+
+  <section class="screen" id="screen-photo-viewer">
+    <button class="viewer-close" id="viewer-close">✕</button>
+    <img class="viewer-media hidden" id="viewer-img">
+    <video class="viewer-media hidden" id="viewer-video" controls playsinline></video>
+    <div class="viewer-nav">
+      <button id="viewer-prev">‹</button>
+      <button id="viewer-next">›</button>
+    </div>
+  </section>
+
+  <!-- Generic placeholder app (Messages/Camera/Safari/Calc) -->
+  <section class="screen" id="app-generic">
+    <div class="statusbar"><span class="sb-time" id="sb-time-gen">9:41</span><span class="sb-right"><span>▂▄▆</span><span>📶</span><span>🔋 100%</span></span></div>
+    <div class="app-bar"><button class="back-btn" data-back="home">‹ Inicio</button><div class="title" id="generic-title">App</div></div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;color:var(--ios-text-dim);text-align:center;padding:0 30px;">
+      Esta app no es necesaria para el rodaje y no está implementada.
+    </div>
+  </section>
+
+  <!-- Settings: leads to director mode with a discreet path -->
+  <section class="screen" id="app-settings">
+    <div class="statusbar"><span class="sb-time" id="sb-time-set">9:41</span><span class="sb-right"><span>▂▄▆</span><span>📶</span><span>🔋 100%</span></span></div>
+    <div class="app-bar"><button class="back-btn" data-back="home">‹ Inicio</button><div class="title">Ajustes</div></div>
+    <div style="padding:14px;">
+      <div class="dir-card" style="background:var(--ios-card)">
+        <div class="dir-field" style="cursor:pointer" id="open-director-from-settings">
+          <label>🎬 Modo Director (control del rodaje)</label>
+          <span style="color:var(--ios-text-dim)">›</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DIRECTOR MODE (built dynamically by director.js) ============ -->
+  <section class="screen" id="app-director">
+    <div class="dir-header">
+      <h1>🎬 Modo Director</h1>
+      <div class="dir-mode-switch">
+        <button id="dir-to-prop">Ver Prop</button>
+      </div>
+    </div>
+    <div class="dir-tabs" id="dir-tabs"></div>
+    <div class="dir-body" id="dir-body"></div>
+  </section>
+
+  <!-- Notification banner layer (overlays everything) -->
+  <div id="notif-banner-layer"></div>
+
+  <!-- Toast -->
+  <div id="dir-toast"></div>
+
+  <!-- Install banner -->
+  <div id="install-banner" class="hidden">
+    <span style="flex:1;font-size:13.5px;">Instala esta app en la pantalla de inicio para usarla offline durante el rodaje.</span>
+    <button id="install-btn">Instalar</button>
+    <button class="close-x" id="install-close">✕</button>
+  </div>
+
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/sync.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/sequencer.js"></script>
+<script src="js/director.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
